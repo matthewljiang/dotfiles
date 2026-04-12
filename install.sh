@@ -5,10 +5,11 @@ set -euo pipefail
 
 if command -v nvim >/dev/null 2>&1; then
   echo "Neovim is already installed: $(nvim --version | head -n 1)"
-  exit 0
+else
+  echo "Neovim not found. Installing..."
+  sudo apt-get update
+  sudo apt-get install -y neovim
 fi
 
-sudo apt-get update
-sudo apt-get install -y neovim
 
 echo "Neovim installation complete. Run 'nvim' to start."
