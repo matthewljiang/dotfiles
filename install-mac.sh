@@ -46,7 +46,7 @@ fi
 # ── Dependencies ─────────────────────────────────────────────────────────────
 
 info "Installing packages..."
-brew install neovim node python3 ripgrep fd stylua
+brew install neovim node python3 ripgrep fd stylua gh
 
 # ── Repo ─────────────────────────────────────────────────────────────────────
 
