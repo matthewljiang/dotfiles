@@ -37,6 +37,7 @@ info "Installing packages..."
 sudo apt-get update -y
 sudo apt-get install -y neovim nodejs npm python3 python3-pip ripgrep fd-find
 
+
 # stylua is not in apt; install via cargo if available, else download from GitHub
 if ! command -v stylua >/dev/null 2>&1; then
   if command -v cargo >/dev/null 2>&1; then

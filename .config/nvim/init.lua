@@ -99,6 +99,12 @@ vim.diagnostic.config({
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- Disable <C-h/j/k/l> so kitty can use them for split navigation
+vim.keymap.set({ "n", "i" }, "<C-h>", "<Nop>")
+vim.keymap.set({ "n", "i" }, "<C-j>", "<Nop>")
+vim.keymap.set({ "n", "i" }, "<C-k>", "<Nop>")
+vim.keymap.set({ "n", "i" }, "<C-l>", "<Nop>")
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.

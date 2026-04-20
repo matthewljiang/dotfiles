@@ -47,6 +47,13 @@ fi
 
 info "Installing packages..."
 brew install neovim node python3 ripgrep fd stylua gh
+brew install --cask alacritty
+
+
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+
+fpath+=($HOME/.zsh/pure)
 
 # ── Repo ─────────────────────────────────────────────────────────────────────
 
@@ -76,8 +83,11 @@ link "$DOTFILES_DIR/.zshrc"  "$HOME/.zshrc"
 link "$DOTFILES_DIR/.vimrc"  "$HOME/.vimrc"
 
 mkdir -p "$HOME/.config"
-link "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
+link "$DOTFILES_DIR/.config/nvim"       "$HOME/.config/nvim"
+mkdir -p "$HOME/.config/alacritty"
+link "$DOTFILES_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
 # ── Done ─────────────────────────────────────────────────────────────────────
 
+source ~/.zshrc
 info "Done. Start a new shell or run: source ~/.zshrc"
