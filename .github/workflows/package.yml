@@ -1,0 +1,26 @@
+name: Package macOS configs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "macos/**"
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build tarball
+        run: tar -czf macos.tar.gz -C macos .
+
+      - name: Upload release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: latest
+          files: macos.tar.gz

@@ -1,0 +1,14 @@
+# Sensitive credentials
+.config/gh/hosts.yml
+.config/atuin/
+.config/cagent/user-uuid
+
+# Embedded git repos (tmux plugins — reinstalled by TPM)
+.config/tmux/plugins/
+
+# App state / not config
+.config/opencode/node_modules/
+.config/opencode/package-lock.json
+.config/iterm2/
+.config/nvim.bak/
+.config/tmux.2026190446/
