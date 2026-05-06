@@ -3,6 +3,8 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR="nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -109,3 +111,16 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 export PATH="$HOME/.local/bin:$PATH"
+
+develop() {sh ~/.config/develop.sh "$@"; }
+
+# ── Omachy managed (do not edit between these markers) ──
+eval "$(starship init zsh)"
+eval "$(fzf --zsh)"
+eval "$(atuin init zsh)"
+set -o vi
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fastfetch
+dev() { sh ~/.config/omachy/dev-session.sh "$@"; }
+# ── End Omachy managed ──
