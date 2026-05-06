@@ -14,6 +14,19 @@ error() {
   exit 1
 }
 
+# ── Configs ───────────────────────────────────────────────────────────────────
+
+info "Downloading configs..."
+curl -fsSL "$CONFIGS_URL" | tar -xz -C "$CONFIGS_DIR"
+
+info "Copying configs..."
+cp "$CONFIGS_DIR/.tmux.conf" "$HOME/.tmux.conf"
+
+mkdir -p "$HOME/.config"
+cp -r "$CONFIGS_DIR/.config/." "$HOME/.config/"
+
+rm -rf "$CONFIGS_DIR"
+
 # ── Homebrew ──────────────────────────────────────────────────────────────────
 
 if ! command -v brew >/dev/null 2>&1; then
@@ -36,19 +49,6 @@ omachy install
 
 brew tap wontaeyang/hrm
 brew install --cask hrm
-
-# ── Configs ───────────────────────────────────────────────────────────────────
-
-info "Downloading configs..."
-curl -fsSL "$CONFIGS_URL" | tar -xz -C "$CONFIGS_DIR"
-
-info "Copying configs..."
-cp "$CONFIGS_DIR/.tmux.conf" "$HOME/.tmux.conf"
-
-mkdir -p "$HOME/.config"
-cp -r "$CONFIGS_DIR/.config/." "$HOME/.config/"
-
-rm -rf "$CONFIGS_DIR"
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 
