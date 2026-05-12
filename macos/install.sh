@@ -14,18 +14,10 @@ error() {
   exit 1
 }
 
-# ── Configs ───────────────────────────────────────────────────────────────────
+# ── Download configs ──────────────────────────────────────────────────────────
 
 info "Downloading configs..."
 curl -fsSL "$CONFIGS_URL" | tar -xz -C "$CONFIGS_DIR"
-
-info "Copying configs..."
-cp "$CONFIGS_DIR/.tmux.conf" "$HOME/.tmux.conf"
-
-mkdir -p "$HOME/.config"
-cp -r "$CONFIGS_DIR/.config/." "$HOME/.config/"
-
-rm -rf "$CONFIGS_DIR"
 
 # ── Homebrew ──────────────────────────────────────────────────────────────────
 
@@ -49,6 +41,19 @@ omachy install
 
 brew tap wontaeyang/hrm
 brew install --cask hrm
+
+# ── Copy configs ──────────────────────────────────────────────────────────────
+
+info "Copying configs..."
+cp "$CONFIGS_DIR/.tmux.conf" "$HOME/.tmux.conf"
+
+mkdir -p "$HOME/.config"
+cp -r "$CONFIGS_DIR/.config/." "$HOME/.config/"
+
+# Remove ghostty's auto-created Application Support config so only ~/.config/ghostty is used
+rm -f "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+
+rm -rf "$CONFIGS_DIR"
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 

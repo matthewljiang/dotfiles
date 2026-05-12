@@ -1,8 +1,15 @@
 return {
-  -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
   {
-    "LazyVim/LazyVim",
-    opts = { colorscheme = "gruvbox" },
+    "maxmx03/solarized.nvim",
+    lazy = false,
+    config = function()
+      require("solarized")
+      vim.o.background = "light"
+      vim.cmd.colorscheme("solarized")
+    end,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
   },
 }

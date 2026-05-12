@@ -3,3 +3,8 @@
 -- Add any additional options here
 --
 vim.opt.autoread = true
+
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = { current_line = true },
+})
